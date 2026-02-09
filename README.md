@@ -1,6 +1,6 @@
 # Rút lì xì ngày Tết - Demo
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/ff884a75-eadd-40f3-bb32-283799dc7000" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/8ad2922e-1488-4081-9a6c-9e5904a8b0c6" />
 
 ---
 >Nếu cảm thấy thích thú, bạn có thể ủng hộ mình thông qua tài khoản này, để mình có thêm động lực tạo ra nhiều thứ hay hơn
