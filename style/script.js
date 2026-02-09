@@ -23,11 +23,11 @@ const backImages = [
 ];
 
 const moneyImages = [
-    'style/img/money/5k.png',
-    'style/img/money/10k.png',
-    'style/img/money/20k.png',
-    'style/img/money/50k.png',
-    'style/img/money/100k.png'
+    'style/img/money/5k.jpg',
+    'style/img/money/10k.jpg',
+    'style/img/money/20k.jpg',
+    'style/img/money/50k.jpg',
+    'style/img/money/100k.jpg'
 ];
 
 // Default Probabilities (20% each)
@@ -307,3 +307,4 @@ function closeCardModal() {
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+
