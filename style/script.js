@@ -226,6 +226,39 @@ function setupMenu() {
     const musicToggle = document.getElementById('music-toggle');
     const bgMusic = document.getElementById('bg-music');
 
+    // Long Press logic for "Bắt"
+    let longPressTimer;
+    const LONG_PRESS_DURATION = 2000; // 2 seconds
+
+    const startLongPress = (e) => {
+        // Only trigger on main menu button
+        longPressTimer = setTimeout(() => {
+            showRandomMoneyInMenu();
+            // Pulse effect or feedback can be added here
+            menuTrigger.classList.remove('holding');
+        }, LONG_PRESS_DURATION);
+        menuTrigger.classList.add('holding');
+    };
+
+    const cancelLongPress = () => {
+        clearTimeout(longPressTimer);
+        menuTrigger.classList.remove('holding');
+    };
+
+    // Desktop
+    menuTrigger.addEventListener('mousedown', startLongPress);
+    menuTrigger.addEventListener('mouseup', cancelLongPress);
+    menuTrigger.addEventListener('mouseleave', cancelLongPress);
+
+    // Mobile
+    menuTrigger.addEventListener('touchstart', (e) => {
+        // e.preventDefault(); // Don't prevent default to allow click to work too
+        startLongPress(e);
+    });
+    menuTrigger.addEventListener('touchend', cancelLongPress);
+    menuTrigger.addEventListener('touchcancel', cancelLongPress);
+    menuTrigger.addEventListener('contextmenu', (e) => e.preventDefault());
+
     // Menu Toggle
     menuTrigger.addEventListener('click', () => {
         menuContainer.classList.toggle('active');
@@ -262,6 +295,34 @@ function setupMenu() {
                 });
             }
         }
+    });
+}
+
+function showRandomMoneyInMenu() {
+    const menuOptions = document.getElementById('menu-options');
+    let moneyItem = document.getElementById('menu-random-money');
+
+    if (!moneyItem) {
+        moneyItem = document.createElement('div');
+        moneyItem.id = 'menu-random-money';
+        moneyItem.className = 'menu-item money-reveal';
+        menuOptions.appendChild(moneyItem);
+    }
+
+    const randomIdx = Math.floor(Math.random() * moneyImages.length);
+    const moneyImgSrc = moneyImages[randomIdx];
+
+    moneyItem.innerHTML = `<img src="${moneyImgSrc}" alt="Money" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">`;
+
+    // Add active class to container and animate the new item
+    document.getElementById('menu-container').classList.add('active');
+
+    // Play a small sound or effect if needed
+    confetti({
+        particleCount: 50,
+        spread: 40,
+        origin: { x: 0.1, y: 0.1 },
+        zIndex: 3000
     });
 }
 
